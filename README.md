@@ -1,1 +1,1 @@
-# cereals-price-prediction
+# Cereals Price Prediction
