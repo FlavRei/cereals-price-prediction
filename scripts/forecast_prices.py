@@ -1,7 +1,7 @@
 import pickle
 import os
 
-def forecast_future_prices(model_path, periods=21):
+def forecast_future_prices(model_path, periods=11):
     """
     Loads a saved Prophet model, forecasts 'periods' years into the future.
     """

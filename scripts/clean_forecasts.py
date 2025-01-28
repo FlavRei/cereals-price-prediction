@@ -14,17 +14,17 @@ def format_prophet_forecast(forecast_csv, output_csv, last_historical_year=2023)
 
     df.rename(columns={
         'ds': 'date',
-        'yhat': 'predicted_price_usd_tonne',
-        'yhat_lower': 'predicted_price_lower',
-        'yhat_upper': 'predicted_price_upper'
+        'yhat': 'Predicted Value',
+        'yhat_lower': 'Predicted Value Lower',
+        'yhat_upper': 'Predicted Value Upper'
     }, inplace=True)
 
-    df['year'] = df['date'].dt.year
-    df = df[['year', 'predicted_price_usd_tonne', 'predicted_price_lower', 'predicted_price_upper']]
+    df['Year'] = df['date'].dt.year
+    df = df[['Year', 'Predicted Value', 'Predicted Value Lower', 'Predicted Value Upper']]
 
-    df['predicted_price_usd_tonne'] = df['predicted_price_usd_tonne'].round(2)
-    df['predicted_price_lower'] = df['predicted_price_lower'].round(2)
-    df['predicted_price_upper'] = df['predicted_price_upper'].round(2)
+    df['Predicted Value'] = df['Predicted Value'].round(2)
+    df['Predicted Value Lower'] = df['Predicted Value Lower'].round(2)
+    df['Predicted Value Upper'] = df['Predicted Value Upper'].round(2)
 
     df.to_csv(output_csv, index=False)
     print(f"Final forecast file: {output_csv}")
