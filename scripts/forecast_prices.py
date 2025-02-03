@@ -1,14 +1,14 @@
 import pickle
 import os
 
-def forecast_future_prices(model_path, periods=11):
+def forecast_future_prices(model_path, periods=31):
     """
     Loads a saved Prophet model, forecasts 'periods' years into the future.
     """
     with open(model_path, "rb") as f:
         model = pickle.load(f)
 
-    future = model.make_future_dataframe(periods=periods, freq='Y') 
+    future = model.make_future_dataframe(periods=periods, freq='YE') 
     forecast = model.predict(future)
     return forecast
 
