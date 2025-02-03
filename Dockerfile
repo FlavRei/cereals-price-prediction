@@ -9,4 +9,4 @@ RUN poetry install --no-root
 COPY . .
 
 EXPOSE 8501
-CMD ["poetry", "run", "streamlit", "run", "app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["poetry", "run", "streamlit", "run", "app_streamlit.py", "--server.port=8080", "--server.address=0.0.0.0"]
