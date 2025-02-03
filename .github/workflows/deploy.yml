@@ -22,13 +22,13 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t gcr.io/cereals-price-prediction/streamlit-app .
+          docker build -t europe-west1-docker.pkg.dev/cereals-price-prediction/streamlit-app-repo/streamlit-app .
           docker push europe-west1-docker.pkg.dev/cereals-price-prediction/streamlit-app-repo/streamlit-app
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy cereals-dashboard \
-            --image gcr.io/cereals-price-prediction/streamlit-app \
+            --image europe-west1-docker.pkg.dev/cereals-price-prediction/streamlit-app-repo/streamlit-app \
             --platform managed \
             --region europe-west1 \
             --allow-unauthenticated
