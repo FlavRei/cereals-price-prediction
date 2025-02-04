@@ -6,5 +6,5 @@ COPY pyproject.toml poetry.lock ./
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8501
 CMD ["poetry", "run", "streamlit", "run", "app_streamlit.py", "--server.port=8080", "--server.address=0.0.0.0"]
