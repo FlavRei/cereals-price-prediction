@@ -29,10 +29,10 @@ jobs:
 
       - name: Run data pipeline
         run: |
-          poetry run python src/collect_data.py
-          poetry run python src/train_models.py
-          poetry run python src/forecast_prices.py
-          poetry run python src/clean_forecasts.py
+          poetry run python scripts/collect_data.py
+          poetry run python scripts/train_models.py
+          poetry run python scripts/forecast_prices.py
+          poetry run python scripts/clean_forecasts.py
           poetry run python utils/gcs_data.py
 
       - name: Configure Docker
