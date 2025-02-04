@@ -17,6 +17,24 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry install
+
+      - name: Run data pipeline
+        run: |
+          poetry run python src/collect_data.py
+          poetry run python src/train_models.py
+          poetry run python src/forecast_prices.py
+          poetry run python src/clean_forecasts.py
+          poetry run python utils/gcs_data.py
+
       - name: Configure Docker
         run: gcloud auth configure-docker europe-west1-docker.pkg.dev
 

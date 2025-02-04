@@ -14,11 +14,15 @@ def train_prophet_model(csv_path, model_output_path):
     df_prophet['y'] = df['Value'] 
 
     model = Prophet(
-        yearly_seasonality=True,
+        changepoint_prior_scale=0.23,
+        changepoint_range=0.74,
+        yearly_seasonality=False,
         weekly_seasonality=False,
-        daily_seasonality=False
+        daily_seasonality=False,
+        seasonality_mode="multiplicative",
     )
-
+    
+    model.add_seasonality(name="yearly", period=365.25, fourier_order=10)
     model.fit(df_prophet)
 
     with open(model_output_path, "wb") as f:
