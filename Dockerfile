@@ -3,10 +3,8 @@ FROM python:3.9
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock ./
-RUN pip install poetry
-RUN poetry install --no-root
 
 COPY . .
 
-EXPOSE 8501
+EXPOSE 8080
 CMD ["poetry", "run", "streamlit", "run", "app_streamlit.py", "--server.port=8080", "--server.address=0.0.0.0"]
